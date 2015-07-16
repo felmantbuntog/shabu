@@ -17,3 +17,6 @@
 !/bin/.keep
 # vim files
 *.swp
+
+# Ignore test files.
+/test/*
