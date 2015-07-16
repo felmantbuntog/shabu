@@ -25,4 +25,4 @@
 /db/schema.rb
 
 #ignore database connection
-#/config/database.yml
+/config/database.yml
