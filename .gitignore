@@ -17,3 +17,12 @@
 !/bin/.keep
 # vim files
 *.swp
+
+# Ignore test files.
+/test/*
+
+# Ignore schema.rb
+/db/schema.rb
+
+#ignore database connection 
+/config/database.yml
