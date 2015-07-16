@@ -31,6 +31,13 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 # use simple form
 gem 'simple_form', '~> 3.1.0'
 
+# Use carrierwave-base64 to handle base64 encoding/decoding
+gem 'carrierwave-base64'
+# This gem provides a simple and extremely flexible way to upload files from Ruby applications. It works well with Rack based web applications
+gem 'carrierwave'
+
+gem 'rmagick'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

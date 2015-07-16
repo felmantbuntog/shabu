@@ -26,3 +26,6 @@
 
 #ignore database connection
 /config/database.yml
+
+# Ignore uploads folder
+/public/uploads/
