@@ -6,6 +6,7 @@
 
     <% @products.each do |product| %>
     <div class="">
+    <%= image_tag('no-photo.gif', id: "img_prev" ) unless product.image? %>
     <%= image_tag product.image_url(:thumb).to_s  %>
     <%= product.name %>
     <%= product.price %>
