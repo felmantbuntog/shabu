@@ -12,30 +12,30 @@
 					<% end %>	
 				<% end %>
 
-				<%= f.label :name, "Email Address" %>
-				<%= f.text_field :email, :class=>'form-control margin-bottom-20' %>
+				<%= f.label :email, "Email Address" %>
+				<%= f.email_field :email, :class=>'form-control margin-bottom-20' %>
 
 				<%=  content_tag :div, :class=>'row' do %>
 					<%=  content_tag :div, :class=>'col-sm-6' do %>
-						<%= f.label :name, "Password" %>
+						<%= f.label :password, "Password" %>
 						<%= f.password_field :password, :class=>'form-control margin-bottom-20' %>
 					<% end %>
 					<%=  content_tag :div, :class=>'col-sm-6' do %>
-						<%= f.label :name, "Confirm Password" %>
+						<%= f.label :password_confirmation, "Confirm Password" %>
 						<%= f.password_field :password_confirmation, :class=>'form-control margin-bottom-20' %>
 					<% end %>
 				<% end %>
 				
-				<%= f.label :name, 'First name' %>
+				<%= f.label :firstname, 'First name' %>
 				<%= f.text_field :firstname ,:class=>'form-control margin-bottom-20'%>
 
-				<%= f.label :name, 'Last name' %>
+				<%= f.label :lastname, 'Last name' %>
 				<%= f.text_field :lastname ,:class=>'form-control margin-bottom-20'%>
 
-				<%= f.label :name, 'Address' %>
+				<%= f.label :address, 'Address' %>
 				<%= f.text_field :address ,:class=>'form-control margin-bottom-20'%>
 
-				<%= f.label :name, 'Contact No' %>
+				<%= f.label :phonenumber, 'Contact No' %>
 				<%= f.text_field :phonenumber ,:class=>'form-control margin-bottom-20'%>
 				<hr/>
 				<%=  content_tag :div, :class=>'row' do %>
