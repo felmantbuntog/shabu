@@ -1,21 +1,29 @@
 <div class="center jumbotron">
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Products</h1>
+    <div class="container">
+      <div class="row">
+        <% @products.each do |product| %>
+          <div class="col-md-4">
+            <%= div_for(product) do %>
+              <div class="thumb">
+                <%=link_to(product) do %>
+                  <%= image_tag('no-photo.gif', id: "img_prev" , class: "img-responsive" ) unless product.image? %>
+                  <%= image_tag product.image_url(:thumb).to_s  %>
+              </div>
+                  <h3><%= product.name %></h3>
+                <% end %>
 
+              <h5><%= number_to_currency(product.price, unit: "₱") %></h5>
 
-    <% @products.each do |product| %>
-    <div class="">
-    <%= image_tag('no-photo.gif', id: "img_prev" ) unless product.image? %>
-    <%= image_tag product.image_url(:thumb).to_s  %>
-    <%= product.name %>
-    <%= product.price %>
-
-        <%= link_to 'Show', product %>
-        <%= link_to 'Edit', edit_product_path(product) %>
-        <!-- <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+              <!-- <%= link_to 'Edit', edit_product_path(product) %>
+              <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+              <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <% end %>
+
 
 
 

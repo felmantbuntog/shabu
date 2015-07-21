@@ -1,3 +1,28 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.carousel {
+    margin-top: 20px;
+}
+
+.item .thumb {
+	width: 24%;
+	height: 200px;
+	cursor: pointer;
+	float: left;
+}
+.item .thumb img {
+	width: 100%;
+	margin: 2px;
+}
+.slide > .carousel-inner > .item > img{
+	width: 100%;
+	margin: 0 auto;
+	max-width: 800px; 
+	height: 600px;
+}
+
+.carousel-control {
+	background-color: green;
+}
