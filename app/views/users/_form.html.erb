@@ -1,0 +1,63 @@
+<div class="container content">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >
+		<%= simple_form_for User.new,:html=> {:id=>'frm_registration'}  do |f| %>
+			<%= content_tag :div, :class => 'reg-page' do %>
+				<%= content_tag :div, :class => 'reg-header' do %>
+					<%= content_tag :h2 do %>Register a new account<% end %>	
+					<%= content_tag :p do %>
+						Already Signed Up? Click 
+						<%= content_tag :a , :href=>'#',:class=>'color-green' do %>Sign In<% end %>
+						 to login your account.
+					<% end %>	
+				<% end %>
+
+				<%= f.label :email, "Email Address" %>
+				<%= f.email_field :email, :class=>'form-control margin-bottom-20' %>
+
+				<%=  content_tag :div, :class=>'row' do %>
+					<%=  content_tag :div, :class=>'col-sm-6' do %>
+						<%= f.label :password, "Password" %>
+						<%= f.password_field :password, :class=>'form-control margin-bottom-20' %>
+					<% end %>
+					<%=  content_tag :div, :class=>'col-sm-6' do %>
+						<%= f.label :password_confirmation, "Confirm Password" %>
+						<%= f.password_field :password_confirmation, :class=>'form-control margin-bottom-20' %>
+					<% end %>
+				<% end %>
+				
+				<%= f.label :firstname, 'First name' %>
+				<%= f.text_field :firstname ,:class=>'form-control margin-bottom-20'%>
+
+				<%= f.label :lastname, 'Last name' %>
+				<%= f.text_field :lastname ,:class=>'form-control margin-bottom-20'%>
+
+				<%= f.label :address, 'Address' %>
+				<%= f.text_field :address ,:class=>'form-control margin-bottom-20'%>
+
+				<%= f.label :phonenumber, 'Contact No' %>
+				<%= f.text_field :phonenumber ,:class=>'form-control margin-bottom-20'%>
+
+				<%= f.label :other_info, 'Other Information' %>
+				<%= f.text_area :other_info,:class=>'form-control margin-bottom-20' %>
+				<hr/>
+				<%=  content_tag :div, :class=>'row' do %>
+					<%= content_tag :div, :class=>'col-lg-12' do %>
+						<%= f.label  'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.' %>
+					 <br/>
+					 <%= f.check_box :terms_of_service %>
+	  				 <%= f.label :terms_of_service, "I agree to the terms of Service." %>
+	 
+					<% end %>
+				<% end %>
+
+				<%=  content_tag :div, :class=>'row text-right ' do %>
+					<%= f.button :submit , "Register" , class: 'btn btn-success'  %>
+				<% end %>
+				
+			<% end %>
+		<% end %>
+	</div>
+	</div>
+
+</div>

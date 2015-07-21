@@ -1,3 +1,53 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*Registration and Login Page v1
+------------------------------------*/
+$color: #555;
+.reg-page {
+	color: $color;
+	padding: 30px;
+	background: #fefefe;
+	border: solid 1px #eee;
+	box-shadow: 0 0 3px #eee;
+
+	/*Reg Header*/
+	.reg-header {
+		color: $color;
+		text-align: center;
+		margin-bottom: 35px;
+		border-bottom: solid 1px #eee;
+
+		h2{
+			font-size:24px;
+			margin-bottom:15px;
+		}
+	}
+
+	input,textarea{
+		border-radius:1px;
+	}
+}
+.btn-u {
+  border: 0;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 400;
+  padding: 6px 13px;
+  position: relative;
+  background: #72c02c;
+  white-space: nowrap;
+  display: inline-block;
+  text-decoration: none;
+}
+
+
+.color-green {
+  color: #72c02c;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
