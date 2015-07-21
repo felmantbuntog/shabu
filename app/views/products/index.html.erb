@@ -7,7 +7,7 @@
           <div class="col-md-4">
             <div class="cont-box rounded">
               <%= div_for(product) do %>
-                  <div class="thumb">
+                  <div class="thumb_index">
                     <%=link_to(product) do %>
                       <%= image_tag('no-photo.gif', id: "img_prev" , class: "img-responsive" ) unless product.image? %>
                       <%= image_tag product.image_url(:thumb).to_s  %>

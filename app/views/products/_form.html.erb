@@ -21,6 +21,6 @@
       <%= image_tag(@product.image_url) if @product.image? %>
       <%= f.input :image, :required => false ,input_html: { onchange: "readURL(this);" }, as: :file %>
       <%= f.input :image_cache, as: :hidden %>
-      <%= f.button :submit , "Add" , class: 'btn btn-success'  %>
+      <%= f.button :submit , "Add" , class: 'btn btn-success' %>
     </div>
 <% end %>
