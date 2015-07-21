@@ -29,3 +29,9 @@
 
 # Ignore uploads folder
 /public/uploads/
+
+# Ignore uploads folder
+/.DS_Store
+
+# Ignore uploads folder
+/public/.DS_Store

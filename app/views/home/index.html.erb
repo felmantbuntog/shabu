@@ -1,7 +1,47 @@
 <div class="center jumbotron">
-  <h1>Home</h1>
-  <h2>
-    Lorem ipsum char blah!
-  </h2>
+	<div id="carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="/carousel.jpg">
+                <div class="carousel-caption">
+                    <p>Sample Category<br /><br /><br /><br /><br />Felman site</p>
+                </div>
+            </div>
+            <% @categories.each do |category| %>
+				<div class="item">
+					<img src="<%= category.image.to_s  %>" alt="no image">
+                    <div class="carousel-caption">
+                        <p><%= category.title  %></p>
+                    </div>
+				</div>
+			<% end %>
+        </div>
+    </div> 
+    <div class="clearfix">
+        <div id="thumbcarousel" class="carousel slide" data-interval="false">
+            <div class="carousel-inner">
+                <div class="item active">
+                	<% 0.upto(3) do |x| %>
+						<div data-target="#carousel" data-slide-to="<%= x+1 %>" class="thumb">
+							<img src="<%= @categories[x].image.to_s  %>">
+						</div>
+					<% end %>
+                </div>
+                <div class="item">
+					<% 4.upto(7) do |x| %>
+						<div data-target="#carousel" data-slide-to="<%= x+1 %>" class="thumb">
+							<img src="<%= @categories[x].image.to_s  %>">
+						</div>
+					<% end %>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div> 
+    </div>
   <h2>Browse Products directory <%= link_to "here", products_path %></h2>
 </div>
