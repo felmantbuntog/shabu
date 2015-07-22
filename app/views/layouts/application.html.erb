@@ -10,9 +10,10 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
-
-<%= yield %>
-<%= render 'layouts/footer' %>
-
+    <div class="container">
+      <%= flash_messages %>
+    </div>
+      <%= yield %>
+  <%= render 'layouts/footer' %>
 </body>
 </html>
