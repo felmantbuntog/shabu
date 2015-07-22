@@ -1,3 +1,4 @@
+<script src="https://maps.googleapis.com/maps/api/js"></script>
 <div class="container-fluid" style="width:80%">
 	<p id="notice"><%= notice %></p>
     <div class="row">
@@ -15,11 +16,28 @@
             <p>Date Posted: </p>
             <p>Contact Number: </p>
             <p>Address: </p>
+			<div style="height:300px">
+				<div id="map-canvas" style="height:100%"></div>
+			</div>
         </div>
     </div>
 </div>
 
-
+<script>
+	function initialize() {
+		var mapCanvas = document.getElementById('map-canvas');
+		var mapOptions = {
+			center: new google.maps.LatLng(10.3352813, 123.9340872),
+			zoom: 17,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+		var map = new google.maps.Map(mapCanvas, mapOptions)
+	}
+	
+	//$(window).load(function(){
+		window.setTimeout(initialize, 1000)
+	//});
+</script>
 <!--
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
