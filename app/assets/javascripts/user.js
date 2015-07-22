@@ -13,19 +13,27 @@ $(document).ready(function(){
 		uOtherInformation  	= $("#user_firstname");
 		
 		if(uEmail.val().length <= 0 ){
-			uEmail.after("<p>Email can't be blank</p>");
-			submit = false;
-		}else{
-			submit = false;
+			$("label[for='user_email']").addClass("color-red").html("Email Address is empty");
+			return false;
+		}else if(uEmail.val().length > 0 ){
+			
+			if(!IsEmail(uEmail.val())){
+				$("label[for='user_email']").addClass("color-red").html("Email Address is invalid");
+				return false;
+			}else if(IsEmail(uEmail.val())){
+				$("label[for='user_email']").removeClass("color-red");
+				return true;
+			}
+			
 		}
 
-		if(uPassword.val().length === 0){
+		if(uPassword.val().length <= 0){
 		   //uPassword.after("<p>Password can't be blank</p>");
-		   console.log("jameshwart");
-		   submit = false;
+		   $("label[for='user_password']").addClass("color-red").html("Password is empty");
+		   return false;
 		}else if(uPassword.length >0){
-			  console.log("asdf");
-			submit = true;
+			 $("label[for='user_password']").removeClass("color-red");
+			return true;
 		}
 
 		// if(uConfirmPassword.length < 0){
@@ -56,9 +64,7 @@ $(document).ready(function(){
 		// 	submit = false;
 		// }
 
-		if(submit === false){
-			return false;
-		}
+		
 		
 		
 	});
