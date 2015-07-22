@@ -4,22 +4,22 @@ $(document).ready(function(){
 		var submit = false;
 		
 		termsIsChecked 		= $("#user_terms_of_service").is(":checked");
-		uEmail 				= $("#user_email").val();
-		uPassword 			= $("#user_password").val();
-		uConfirmPassword 	= $("#user_password_confirmation").val();
-		uFirstName  		= $("#user_firstname").val();
-		uLastName  			= $("#user_firstname").val();
-		uContactNumber  	= $("#user_firstname").val();
-		uOtherInformation  	= $("#user_firstname").val();
+		uEmail 				= $("#user_email");
+		uPassword 			= $("#user_password");
+		uConfirmPassword 	= $("#user_password_confirmation");
+		uFirstName  		= $("#user_firstname");
+		uLastName  			= $("#user_firstname");
+		uContactNumber  	= $("#user_firstname");
+		uOtherInformation  	= $("#user_firstname");
 		
-		// if(uEmail.length <= 0 ){
-		// 	uEmail.after("<p>Email can't be blank</p>");
-		// 	submit = false;
-		// }else{
-		// 	submit = false;
-		// }
+		if(uEmail.val().length <= 0 ){
+			uEmail.after("<p>Email can't be blank</p>");
+			submit = false;
+		}else{
+			submit = false;
+		}
 
-		if(uPassword.length === 0){
+		if(uPassword.val().length === 0){
 		   //uPassword.after("<p>Password can't be blank</p>");
 		   console.log("jameshwart");
 		   submit = false;
