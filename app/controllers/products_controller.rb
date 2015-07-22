@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_filter :populate
 
   # GET /products
   # GET /products.json
@@ -59,6 +60,10 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def populate
+    @category_list = Category.uniq.pluck(:title)
   end
 
   private

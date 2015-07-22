@@ -41,6 +41,7 @@ section {
 
 textarea {
     resize: vertical;
+    border-radius:1px;
 }
 
 /* typography */
@@ -70,6 +71,9 @@ p {
     line-height: 1.7em;
 }
 
+input {
+  border-radius:1px !important;
+}
 /* header */
 
 #logo {
@@ -123,18 +127,31 @@ footer ul li {
     height: 200px;
 }
 
-.thumb {
+.thumb_index {
   width: 200px;
   height: 200px;
-  display:table-cell;
-  vertical-align: middle;
-  text-align:center;
+  text-align: center;
+  margin-left: 65px;
+  // background: #eee;
 }
 
 .product {
-  margin-left: 22.222222222%;
 }
 
 .product > a {
   text-decoration: none;
+}
+
+.rounded {
+  border-radius: 4px;
+}
+
+.cont-box {
+  background: #fff;
+  padding: 15px 15px 5px;
+  border-bottom: solid 2px #eee;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }

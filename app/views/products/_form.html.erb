@@ -1,4 +1,4 @@
-<%= simple_form_for(@product) do |f| %>
+<%= simple_form_for :product , :html=>{:multipart => true } , url: @product do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -16,11 +16,11 @@
       <%= f.input :name, input_html: { class: 'form-control' }  %>
       <%= f.input :description , :required => false,  as: :text , input_html: { class: 'form-control' }  %>
       <%= f.input :price, :required => false, input_html: { class: 'form-control' }  %>
-      <%= f.input :category, input_html: { class: 'form-control' }, as: :select  %>
+      <%= f.input :category, collection: @category_list , input_html: { class: 'form-control' }, as: :select %>
       <%= image_tag('no-photo.gif' , id: "img_prev") unless @product.image? %>
       <%= image_tag(@product.image_url) if @product.image? %>
       <%= f.input :image, :required => false ,input_html: { onchange: "readURL(this);" }, as: :file %>
       <%= f.input :image_cache, as: :hidden %>
-      <%= f.button :submit , "Add" , class: 'btn btn-success'  %>
+      <%= f.button :submit , "Add" , class: 'btn btn-success' %>
     </div>
 <% end %>
