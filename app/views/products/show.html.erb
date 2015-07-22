@@ -9,8 +9,11 @@
 			<%= image_tag @product.image_url(:thumb).to_s %>
 			<p>Price: <%= @product.price %></p>
             <p>Description:<br /><%= @product.description %></p>
+            <p>Contact Owner: </p>
+            <p><textarea class="form-control" type="text" placeholder="Your message here" /></textarea></p>
+            <p><button class="btn btn-default">Send</button></p>
         </div>
-        <div class="col-xs-4" style="background-color:lightgrey">
+        <div class="col-xs-4 padding-small" style="background-color:lightgrey">
             <p>Seller Info:</p>
             <p>Name: </p>
             <p>Date Posted: </p>
