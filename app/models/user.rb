@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
 	def self.search(email)
 		if email
-			where('email = ?',"#{email}")
+			where('email = ?',email).first
 		end
 
 	end

@@ -1,12 +1,29 @@
 $(document).ready(function(){
+	function checkEmailIfExists(myCallbackFunction){
+		 $.post('/checkemail?email='+$("#user_email").val(),function(data){
+			    	return myCallbackFunction(data);
+		   });
+	}
 
 	$("#user_email").on('change keyup paste',function(){
+		
 		if(IsEmail($("#user_email").val())){
-			//check server if the email is valid
-			//send request to the server if and check if the email already exists
+
+			checkEmailIfExists(function(data){
+					if(data.email_exists == true){
+			    		$("label[for='user_email']").addClass("color-red").html("Email Address is already used!");
+			    	}else if(data.email_exists == false){
+			    		$("label[for='user_email']").removeClass("color-red").html("Email Address");
+			    	}
+			});
+
+		}else if(!IsEmail($("#user_email").val())){
+			$("label[for='user_email']").addClass("color-red").html("Email Address is invalid");
 		}
+	  
 	});
-	$("#frm_registration").submit(function(event){
+	
+	$(document).on('submit','#frm_registration',function(event){
 		
 		uEmail 				= $("#user_email");
 		uPassword 			= $("#user_password");
@@ -24,8 +41,12 @@ $(document).ready(function(){
 			if(!IsEmail(uEmail.val())){
 				$("label[for='user_email']").addClass("color-red").html("Email Address is invalid");
 				return false;
-			}else{
-				$("label[for='user_email']").removeClass("color-red").html("Email Address");
+			}else if(IsEmail(uEmail.val())){
+				
+				if($("label[for='user_email']").hasClass("color-red")){
+					return false;
+				}
+				
 			}
 			
 		}
