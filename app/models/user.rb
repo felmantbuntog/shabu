@@ -4,4 +4,11 @@ class User < ActiveRecord::Base
 
 	 validates_presence_of :email,:password,:firstname,:lastname,:address,:phonenumber
 	has_many :products
+
+	def self.search(email)
+		if email
+			where('email = ?',"#{email}")
+		end
+
+	end
 end

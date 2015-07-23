@@ -22,7 +22,8 @@ class UsersController < ApplicationController
 
 	def edit
   	end
-
+  	def emailcheck(email)
+  	end
 	private
 
 	def user_params

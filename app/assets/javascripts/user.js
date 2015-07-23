@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+	$("#user_email").on('change keyup paste',function(){
+		if(IsEmail($("#user_email").val())){
+			//check server if the email is valid
+			//send request to the server if and check if the email already exists
+		}
+	});
 	$("#frm_registration").submit(function(event){
 		
 		uEmail 				= $("#user_email");
@@ -57,7 +63,6 @@ $(document).ready(function(){
 			$("label[for='user_phonenumber']").addClass("color-red").html("Contact number is empty");
 			return false;
 		}
-
 	});
 
 	function IsEmail(email) {
