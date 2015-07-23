@@ -106,6 +106,7 @@ GEM
     mysql2 (0.3.18)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    pg (0.18.2)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -191,6 +192,7 @@ DEPENDENCIES
   less-rails
   mysql
   mysql2
+  pg (~> 0.18.2)
   rails (= 4.2.3)
   rmagick
   sass-rails (~> 5.0)
