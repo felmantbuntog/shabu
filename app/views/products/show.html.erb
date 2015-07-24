@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-xs-8">
         	<h3><%= @product.name %></h3>
-        	<p><%= @product.category %></p>
+        	<span class="box-grey rounded"><%= @product.category %></span>
         	<%= image_tag('no-photo.gif' , id: "img_prev") unless @product.image? %>
 			<%= image_tag @product.image_url(:thumb_medium).to_s %>
 			<h4><%= number_to_currency(@product.price, unit: "₱") %></h4>
