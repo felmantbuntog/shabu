@@ -1,6 +1,29 @@
 $(document).ready(function(){
+	function checkEmailIfExists(myCallbackFunction){
+		 $.post('/checkemail?email='+$("#user_email").val(),function(data){
+			    	return myCallbackFunction(data);
+		   });
+	}
 
-	$("#frm_registration").submit(function(event){
+	$("#user_email").on('change keyup paste',function(){
+		
+		if(IsEmail($("#user_email").val())){
+
+			checkEmailIfExists(function(data){
+					if(data.email_exists == true){
+			    		$("label[for='user_email']").addClass("color-red").html("Email Address is already used!");
+			    	}else if(data.email_exists == false){
+			    		$("label[for='user_email']").removeClass("color-red").html("Email Address");
+			    	}
+			});
+
+		}else if(!IsEmail($("#user_email").val())){
+			$("label[for='user_email']").addClass("color-red").html("Email Address is invalid");
+		}
+	  
+	});
+	
+	$(document).on('submit','#frm_registration',function(event){
 		
 		uEmail 				= $("#user_email");
 		uPassword 			= $("#user_password");
@@ -18,8 +41,12 @@ $(document).ready(function(){
 			if(!IsEmail(uEmail.val())){
 				$("label[for='user_email']").addClass("color-red").html("Email Address is invalid");
 				return false;
-			}else{
-				$("label[for='user_email']").removeClass("color-red").html("Email Address");
+			}else if(IsEmail(uEmail.val())){
+				
+				if($("label[for='user_email']").hasClass("color-red")){
+					return false;
+				}
+				
 			}
 			
 		}
@@ -57,7 +84,6 @@ $(document).ready(function(){
 			$("label[for='user_phonenumber']").addClass("color-red").html("Contact number is empty");
 			return false;
 		}
-
 	});
 
 	function IsEmail(email) {

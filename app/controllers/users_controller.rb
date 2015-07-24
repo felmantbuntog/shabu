@@ -22,7 +22,12 @@ class UsersController < ApplicationController
 
 	def edit
   	end
-
+  	def emailcheck
+  		@user = User.search(params[:email])
+  		respond_to do |format|
+  			format.json {render :json => {email_exists: @user.present?}}
+  		end 
+  	end
 	private
 
 	def user_params
