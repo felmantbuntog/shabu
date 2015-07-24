@@ -5,21 +5,32 @@ $(document).ready(function(){
 		   });
 	}
 
-	$("#user_email").on('change keyup paste',function(){
-		
-		if(IsEmail($("#user_email").val())){
+	
+	$(document).on('change keyup paste',"#user_email",function(){
+		if($("#user_email").val().trim().length <= 0){
+			$("#user_email").addClass('margin-bottom-20').nextAll('p').remove();
+			$("#user_email").parent().removeClass('has-error');
+		}else{
+			if(IsEmail($("#user_email").val())){
 
-			checkEmailIfExists(function(data){
-					if(data.email_exists == true){
-			    		$("label[for='user_email']").addClass("color-red").html("Email Address is already used!");
-			    	}else if(data.email_exists == false){
-			    		$("label[for='user_email']").removeClass("color-red").html("Email Address");
-			    	}
-			});
+				checkEmailIfExists(function(data){
+						if(data.email_exists == true){
+				    		$("#user_email").removeClass("margin-bottom-20").nextAll('p').remove();
+				    		$("#user_email").parent().addClass('has-error')
+				    		$("#user_email").after("<p class='color-red'>Email Address is already used!</p>");
+				    	}else if(data.email_exists == false){
+				    		$("#user_email").addClass('margin-bottom-20').nextAll('p').remove();
+				    		$("#user_email").parent().removeClass('has-error');
+				    	}
+				});
 
-		}else if(!IsEmail($("#user_email").val())){
-			$("label[for='user_email']").addClass("color-red").html("Email Address is invalid");
+			}else if(!IsEmail($("#user_email").val())){
+				$("#user_email").removeClass("margin-bottom-20").nextAll('p').remove();
+				$("#user_email").parent().addClass('has-error')
+				$("#user_email").after("<p class='color-red'>Email Address is invalid!</p>");
+			}	
 		}
+		
 	  
 	});
 	
@@ -34,16 +45,23 @@ $(document).ready(function(){
 		uOtherInformation  	= $("#user_firstname");
 		
 		if(uEmail.val().length <= 0 ){
-			$("label[for='user_email']").addClass("color-red").html("Email Address is empty");
+			uEmail.removeClass("margin-bottom-20").nextAll('p').remove();
+			uEmail.after("<p class='color-red'>Email Address empty!</p>");
+			uEmail.parent().addClass('has-error');
+			uEmail.focus();
 			return false;
 		}else if(uEmail.val().length > 0 ){
 			
 			if(!IsEmail(uEmail.val())){
-				$("label[for='user_email']").addClass("color-red").html("Email Address is invalid");
+				uEmail.removeClass("margin-bottom-20").nextAll('p').remove();
+				uEmail.after("<p class='color-red'>Email Address is invalid!</p>");
+				uEmail.parent().addClass('has-error')
+				uEmail.focus();
 				return false;
 			}else if(IsEmail(uEmail.val())){
 				
-				if($("label[for='user_email']").hasClass("color-red")){
+				if(uEmail.next('p').hasClass("color-red")){
+					uEmail.focus();
 					return false;
 				}
 				
@@ -52,20 +70,25 @@ $(document).ready(function(){
 		}
 
 		if(uPassword.val().length <= 0){
-		   $("label[for='user_password']").addClass("color-red").html("Password is empty");
+			uPassword.removeClass("margin-bottom-20").nextAll('p').remove();
+			uPassword.after("<p class='color-red'>Password is empty!</p>");
 		   return false;
 		}else if(uPassword.length >0){
-			 $("label[for='user_password']").removeClass("color-red");
+			uPassword.addClass('margin-bottom-20').nextAll('p').remove();
 		}
 
 		if(uConfirmPassword.val().length <= 0){
+			uConfirmPassword.removeClass("margin-bottom-20").nextAll('p').remove();
 			uConfirmPassword.after("<p>Confirm password can't be blank</p>");
 			return false;
 		}else if(uConfirmPassword.val().length > 0){
-			 console.log(uPassword.val()+" ==== "+ uConfirmPassword.val());
+			
 			 if(uPassword.val() !== uConfirmPassword.val()){
-			 	$("label[for='user_password']").addClass("color-red");
-			 	$("label[for='user_password_confirmation']").addClass("color-red").html("Password Don't Match");
+			 	uPassword.parent().addClass('has-error');
+			 	uConfirmPassword.parent().addClass('has-error');
+			 	uConfirmPassword.removeClass("margin-bottom-20").nextAll('p').remove();
+				uConfirmPassword.after("<p class='color-red'>Password Don't Match</p>");
+			 	uConfirmPassword.focus();
 			 	return false;
 			 }
 		}
