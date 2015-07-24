@@ -5,7 +5,41 @@ $(document).ready(function(){
 		   });
 	}
 
-	
+	$(document).on('change keyup paste','#user_password',function(){
+		if($("#user_password").val().trim().length <= 0){
+			$("#user_password").removeClass("margin-bottom-20").nextAll('p').remove();
+			$("#user_password").parent().addClass('has-error');
+			$("#user_password").after("<p class='color-red'>Password is empty!</p>");
+		}else if($("#user_password").val().trim().length >0){
+			$("#user_password").addClass('margin-bottom-20').nextAll('p').remove();
+			$("#user_password").parent().removeClass('has-error');
+		}
+	});
+
+	$(document).on('change keyup paste','#user_password_confirmation',function(){
+		
+		if($("#user_password_confirmation").val().trim().length <= 0){
+			$("#user_password_confirmation").removeClass("margin-bottom-20").nextAll('p').remove();
+			$("#user_password_confirmation").after("<p class='color-red'>Confirm password can't be blank</p>");
+			$("#user_password_confirmation").parent().addClass('has-error');
+		}else if($("#user_password_confirmation").val().trim().length > 0){
+			
+			 if(!($("#user_password").val() == $("#user_password_confirmation").val())){
+			 	console.log($("#user_password").val()+"  "+$("#user_password_confirmation").val());
+			 	$("#user_password").parent().addClass('has-error');
+			 	$("#user_password_confirmation").parent().addClass('has-error');
+			 	$("#user_password_confirmation").removeClass("margin-bottom-20").nextAll('p').remove();
+				$("#user_password_confirmation").after("<p class='color-red'>Password Don't Match</p>");
+			 	
+			 }else if($("#user_password").val() == $("#user_password_confirmation").val()){
+				$("#user_password").parent().removeClass('has-error');
+			 	$("#user_password_confirmation").parent().removeClass('has-error');
+			 	$("#user_password_confirmation").addClass("margin-bottom-20").nextAll('p').remove();
+			 }
+		}
+
+	});
+
 	$(document).on('change keyup paste',"#user_email",function(){
 		if($("#user_email").val().trim().length <= 0){
 			$("#user_email").addClass('margin-bottom-20').nextAll('p').remove();
@@ -69,11 +103,12 @@ $(document).ready(function(){
 			
 		}
 
-		if(uPassword.val().length <= 0){
+		if(uPassword.val().trim().length <= 0){
 			uPassword.removeClass("margin-bottom-20").nextAll('p').remove();
+			uPassword.parent().addClass('has-error');
 			uPassword.after("<p class='color-red'>Password is empty!</p>");
 		   return false;
-		}else if(uPassword.length >0){
+		}else if(uPassword.val().trim().length >0){
 			uPassword.addClass('margin-bottom-20').nextAll('p').remove();
 		}
 
