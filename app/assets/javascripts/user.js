@@ -11,8 +11,25 @@ $(document).ready(function(){
 			$("#user_password").parent().addClass('has-error');
 			$("#user_password").after("<p class='color-red'>Password is empty!</p>");
 		}else if($("#user_password").val().trim().length >0){
-			$("#user_password").addClass('margin-bottom-20').nextAll('p').remove();
-			$("#user_password").parent().removeClass('has-error');
+			$("#user_password").nextAll('p').remove();
+			if($("#user_password_confirmation").val().trim().length > 0){
+				 if(!($("#user_password").val() == $("#user_password_confirmation").val())){
+				 	console.log($("#user_password").val()+"  "+$("#user_password_confirmation").val());
+				 	$("#user_password").parent().addClass('has-error');
+				 	$("#user_password_confirmation").parent().addClass('has-error');
+				 	$("#user_password_confirmation").removeClass("margin-bottom-20").nextAll('p').remove();
+					$("#user_password_confirmation").after("<p class='color-red'>Password Don't Match</p>");
+				 	
+				 }else if($("#user_password").val() == $("#user_password_confirmation").val()){
+					$("#user_password").parent().removeClass('has-error');
+				 	$("#user_password_confirmation").parent().removeClass('has-error');
+				 	$("#user_password_confirmation").addClass("margin-bottom-20").nextAll('p').remove();
+				 }
+			}else{
+				$("#user_password").addClass('margin-bottom-20').nextAll('p').remove();
+				$("#user_password").parent().removeClass('has-error');
+			}
+			
 		}
 	});
 
@@ -129,17 +146,23 @@ $(document).ready(function(){
 		}
 
 		if(uFirstName.val().length <= 0){
-			$("label[for='user_firstname']").addClass("color-red").html("First Name is empty");
+			uFirstName.parent().addClass('has-error');
+			uFirstName.nextAll('p').remove();
+			uFirstName.after("<p class='color-red'>First Name is empty</p>");
 			return false;
 		}
 
 		if(uLastName.val().length <= 0){
-			$("label[for='user_lastname']").addClass("color-red").html("First Name is empty");
+			uLastName.parent().addClass('has-error');
+			uLastName.nextAll('p').remove();
+			uLastName.after("<p class='color-red'>Last Name is empty</p>");
 			return false;
 		}
 
 		if(uContactNumber.val().length < 0){
-			$("label[for='user_phonenumber']").addClass("color-red").html("Contact number is empty");
+			uContactNumber.parent().addClass('has-error');
+			uContactNumber.nextAll('p').remove();
+			uContactNumber.after("<p class='color-red'>Contact Number is empty</p>");
 			return false;
 		}
 	});
