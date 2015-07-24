@@ -1,4 +1,4 @@
-<div class="center jumbotron">
+<div class="center jumbotron no-margin-and-padding">
 	<div id="carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="item active">
@@ -18,20 +18,18 @@
         </div>
     </div> 
     <div class="clearfix">
-        <div id="thumbcarousel" class="carousel slide" data-interval="false">
+        <div id="thumbcarousel" class="carousel slide margin-top" data-interval="false">
             <div class="carousel-inner">
                 <div class="item active">
                 	<% 0.upto(3) do |x| %>
-						<div data-target="#carousel" data-slide-to="<%= x+1 %>" class="thumb">
-							<img src="<%= @categories[x].image.to_s  %>">
+						<div data-target="#carousel" data-slide-to="<%= x+1 %>" class="thumb" style="background-image: url(<%= @categories[x].image.to_s  %>)">
 						</div>
 					<% end %>
                 </div>
                 <div class="item">
 					<% 4.upto(7) do |x| %>
-						<div data-target="#carousel" data-slide-to="<%= x+1 %>" class="thumb">
-							<img src="<%= @categories[x].image.to_s  %>">
-						</div>
+						<div data-target="#carousel" data-slide-to="<%= x+1 %>" class="thumb" style="background-image: url(<%= @categories[x].image.to_s  %>)">
+                        </div>
 					<% end %>
                 </div>
             </div>
@@ -43,5 +41,4 @@
             </a>
         </div> 
     </div>
-  <h2>Browse Products directory <%= link_to "here", products_path %></h2>
 </div>
